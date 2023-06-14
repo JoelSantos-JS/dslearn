@@ -2,8 +2,17 @@ package com.devsuperior.dslearnbds.model;
 
 import java.io.Serializable;
 
-public class Role implements Serializable {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "tb_role")
+public class Role implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String authority;
 
