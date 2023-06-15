@@ -1,6 +1,8 @@
 package com.devsuperior.dslearnbds.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +20,12 @@ public class Course implements Serializable {
     private String name;
     private String imgUri;
     private String imgGrayUri;
+
+    private List<Offer> offers = new ArrayList<>();
+
+    public List<Offer> getOffers() {
+        return offers;
+    }
 
     public Course() {
 
