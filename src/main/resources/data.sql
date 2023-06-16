@@ -18,3 +18,6 @@ INSERT INto tb_offer(edition,start_Moment,end_Moment,course_id) VALUES ('1.0', '
 
 INSERT INTO tb_resource(title, description, position, img_Uri, type, offer_id) VALUES ('Video', 'Video do curso', 1, 'video.jpg',  1, 1);
 INSERT INTO tb_resource(title, description, position, img_Uri, type, offer_id) VALUES ('Video2', 'Video do curso2', 1, 'video.jpg',  2, 1);
+
+INSERT INTO tb_section(title, description, position, img_Uri, resource_id , prerequiste_id) VALUES ('Aula 1', 'Descrição da aula 1', 1, 'section.jpg', 1, NULL);
+INSERT INTO tb_section(title, description, position, img_Uri, resource_id , prerequiste_id) VALUES ('Aula 2', 'Descrição da aula 2', 2, 'section.jpg', 1, NULL);
