@@ -28,12 +28,14 @@ public class Enrollment {
 
     }
 
-    public Enrollment(User user, Offer offer, Instant enroolMoment, Instant refundMoment, boolean available) {
+    public Enrollment(User user, Offer offer, Instant enroolMoment, Instant refundMoment, boolean available,
+            boolean onlyUpdate) {
         this.id.setUser(user);
         this.id.setOffer(offer);
         this.enroolMoment = enroolMoment;
         this.refundMoment = refundMoment;
         this.available = available;
+        this.onlyUpdate = onlyUpdate;
 
     }
 
