@@ -21,4 +21,12 @@ INSERT INTO tb_resource(title, description, position, img_Uri, type, offer_id) V
 
 INSERT INTO tb_section(title, description, position, img_Uri, resource_id , prerequiste_id) VALUES ('Aula 1', 'Descrição da aula 1', 1, 'section.jpg', 1, NULL);
 INSERT INTO tb_section(title, description, position, img_Uri, resource_id , prerequiste_id) VALUES ('Aula 2', 'Descrição da aula 2', 2, 'section.jpg', 1, NULL);
-INSERT INTO tb_enrollment (user_id, offer_id,enrool_Moment,refund_Moment,available,only_Update)VALUES(1, 1 , '2020-06-20T03:00:00Z', NULL, true , false)
+INSERT INTO tb_enrollment (user_id, offer_id,enrool_Moment,refund_Moment,available,only_Update)VALUES(1, 1 , '2020-06-20T03:00:00Z', NULL, true , false);
+
+INSERT INTO tb_lesson(position, title, section_id) VALUES (1, 'aula2', 1);
+ INSERT INTO tb_content(id,text_Context,video_Uri) VALUES (1,'Conte�]', 'www.youtube.com');
+
+INSERT INTO tb_lesson(position, title, section_id) VALUES (2, 'aula3', 2);
+ INSERT INTO tb_content(id,text_Context,video_Uri) VALUES (2,'Conte�] 2', 'www.youtube.com/qwkqllçsdk');
+
+ INSERT INTO tb_lessons_done(lesson_id,user_id,offer_id) VALUES (1,1,1);
