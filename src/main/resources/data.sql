@@ -22,4 +22,4 @@ INSERT INTO tb_resource(title, description, position, img_Uri, type, offer_id) V
 INSERT INTO tb_section(title, description, position, img_Uri, resource_id , prerequiste_id) VALUES ('Aula 1', 'Descrição da aula 1', 1, 'section.jpg', 1, NULL);
 INSERT INTO tb_section(title, description, position, img_Uri, resource_id , prerequiste_id) VALUES ('Aula 2', 'Descrição da aula 2', 2, 'section.jpg', 1, NULL);
 INSERT INTO tb_enrollment (user_id, offer_id,enrool_Moment,refund_Moment,available,only_Update)VALUES(1, 1 , '2020-06-20T03:00:00Z', NULL, true , false)
-INSERT INTO tb_enrollment (user_id, offer_id,enrool_Moment,refund_Moment,available,only_Update)VALUES(1, 1 , '2020-06-20T03:00:00Z', NULL, true , false)
+INSERT INTO tb_enrollment (user_id, offer_id,enrool_Moment,refund_Moment,available,only_Update)VALUES(2, 3 , '2020-06-20T03:00:00Z', NULL, true , false)
