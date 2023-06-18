@@ -34,8 +34,19 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private Set<Notification> notifications = new HashSet<>();
 
+    public User() {
+
+    }
+
     public long getId() {
         return id;
+    }
+
+    public User(long id, String name, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
     }
 
     public void setId(long id) {
