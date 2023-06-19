@@ -116,7 +116,7 @@ public class User implements UserDetails, Serializable {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        return roles.stream().map(roles -> new SimpleGrantedAuthority(roles.getAuthority()))
+        return role.stream().map(roles -> new SimpleGrantedAuthority(roles.getAuthority()))
                 .collect(Collectors.toList());
         // TODO Auto-generated method stub
     }
