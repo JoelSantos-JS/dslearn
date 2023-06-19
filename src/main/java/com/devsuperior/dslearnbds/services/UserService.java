@@ -3,6 +3,7 @@ package com.devsuperior.dslearnbds.services;
 import java.util.Optional;
 
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,10 +20,16 @@ public class UserService implements UserDetailsService {
 
     private static Logger logger = org.slf4j.LoggerFactory.getLogger(UserService.class);
 
+    @Autowired
     private UserRepository ur;
+
+    @Autowired
+    private AuthService authService;
 
     @Transactional(readOnly = true)
     public UserDTO findById(Long id) {
+
+        authService.validateSelfOrAdmin(id);
         Optional<User> obj = ur.findById(id);
         User entity = obj.orElseThrow(() -> new EnityNotFoundException("Entity not found"));
 
