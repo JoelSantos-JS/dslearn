@@ -11,6 +11,9 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.devsuperior.dslearnbds.services.exceptions.ForbidenException;
+import com.devsuperior.dslearnbds.services.exceptions.UnauthorizedException;
+
 @ControllerAdvice
 public class ResourceExceptionHandler {
 
@@ -39,6 +42,24 @@ public class ResourceExceptionHandler {
             err.addError(fieldError.getField(), fieldError.getDefaultMessage());
 
         }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+    }
+
+    @ExceptionHandler(ForbidenException.class)
+    public ResponseEntity<Oauth2Error> entityNotFound(ForbidenException e, HttpServletRequest request) {
+        Oauth2Error err = new Oauth2Error();
+        err.setError("FORBIDEN");
+        err.setErrorDescription(e.getMessage());
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+    }
+
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<Oauth2Error> unathorized(UnauthorizedException e, HttpServletRequest request) {
+        Oauth2Error err = new Oauth2Error();
+        err.setError("UnauthorizedException");
+        err.setErrorDescription(e.getMessage());
+
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
     }
 

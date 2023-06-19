@@ -1,4 +1,4 @@
-package com.devsuperior.DsCatalog.Components;
+package com.devsuperior.dslearnbds.components;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +26,7 @@ public class JwtTokenEnhacer implements TokenEnhancer {
         User user = userRepository.findByEmail(authentication.getName());
 
         Map<String, Object> map = new HashMap<>();
-        map.put("userFirstName", user.getFirstName());
+        map.put("userName", user.getName());
         map.put("userId", user.getId());
 
         DefaultOAuth2AccessToken token = (DefaultOAuth2AccessToken) accessToken;
