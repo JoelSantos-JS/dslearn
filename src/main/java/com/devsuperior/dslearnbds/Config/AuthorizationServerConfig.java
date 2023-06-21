@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -36,6 +37,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private JwtTokenEnhacer tokenEnhacer;
 
+    @Autowired
+    private UserDetailsService userDetailsService;
+
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         // TODO Auto-generated method stub
@@ -47,8 +51,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory().withClient("dscatalog").secret(passwordEncoder.encode("joel"))
                 .scopes("read", "write")
-                .authorizedGrantTypes("password")
-                .accessTokenValiditySeconds(86400);
+                .authorizedGrantTypes("password", "refresh_token")
+                .accessTokenValiditySeconds(86400)
+                .refreshTokenValiditySeconds(86400);
     }
 
     @Override
@@ -58,7 +63,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         chain.setTokenEnhancers(Arrays.asList(accessTokenConverter, tokenEnhacer));
 
         endpoints.authenticationManager(authenticationManager)
-                .tokenStore(tokenStore).accessTokenConverter(accessTokenConverter).tokenEnhancer(chain);
+                .tokenStore(tokenStore).accessTokenConverter(accessTokenConverter).tokenEnhancer(chain)
+                .userDetailsService(userDetailsService);
     }
 
 }
